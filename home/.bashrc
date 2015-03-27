@@ -14,7 +14,7 @@ alias ms="git checkout master"
 function gpb {
     b=`git symbolic-ref --short HEAD`
     test $? == 0 || return;
-    echo git push origin $b
+    `git push origin $b`
 }
 
 export GOROOT=$HOME/go
