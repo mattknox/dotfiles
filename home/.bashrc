@@ -9,4 +9,7 @@ alias gcm='git commit -am'
 alias gb="git branch"
 alias ll="ls -l"
 
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+
 # eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git.
