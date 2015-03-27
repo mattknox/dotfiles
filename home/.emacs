@@ -431,6 +431,11 @@
   (if (member major-mode programming-modes)
       (indent-region (region-beginning) (region-end) nil)))
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; load time measurement.
 (defvar *emacs-load-time* (destructuring-bind (hi lo ms _) (current-time)
                             (- (+ hi lo) (+ (first *emacs-load-start*)
