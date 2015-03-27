@@ -173,7 +173,7 @@
 ;; Put autosave files (ie #foo#) in one place, *not*
 ;; scattered all over the file system!
 
-(setq autosave-dir (concat user-specific-dir "/emacs_autosaves/"))
+(setq autosave-dir "~/.emacs.d/emacs_autosaves/")
 (make-directory autosave-dir t)
 ;(setq auto-save-file-name-transforms `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat autosave-dir "\\1") t)))
 ;(setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
@@ -185,7 +185,7 @@
 ;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
 ;; list contains regexp=>directory mappings; filenames matching a regexp are
 ;; backed up in the corresponding directory. Emacs will mkdir it if necessary.)
-(setq backup-dir (concat user-specific-dir "/emacs_backups/"))
+(setq backup-dir "~/.emacs.d/emacs_backups/")
 (setq backup-directory-alist (list (cons "." backup-dir)))
 (make-directory backup-dir t)
 
@@ -210,7 +210,7 @@
 ;; manager or do M-x kill-emacs.  Don't need a nice shortcut for a once a
 ;; week (or day) action.
 (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
-(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
+;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
 (global-set-key (kbd "C-x B") 'ibuffer)
 
 ;; have vertical ido completion lists
@@ -374,6 +374,8 @@
   (interactive "r")
   (align-regexp begin end "\\(\\s-*\\)=" 1 1 ))
 
+
+
 (defun count-words (&optional begin end)
   "count words between BEGIN and END (region); if no region defined, count words in buffer"
   (interactive "r")
@@ -430,8 +432,9 @@
       (indent-region (region-beginning) (region-end) nil)))
 
 ;; load time measurement.
-(defvar *emacs-load-time* (destructuring-bind (hi lo ms) (current-time)
+(defvar *emacs-load-time* (destructuring-bind (hi lo ms _) (current-time)
                             (- (+ hi lo) (+ (first *emacs-load-start*)
                                             (second *emacs-load-start*)))))
+
 (message "My .emacs loaded in %d s" *emacs-load-time*)
 (toggle-debug-on-error nil)
