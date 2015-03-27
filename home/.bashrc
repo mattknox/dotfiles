@@ -8,6 +8,14 @@ alias gdhm='git diff heroku master'
 alias gcm='git commit -am'
 alias gb="git branch"
 alias ll="ls -l"
+alias co="git checkout"
+alias ms="git checkout master"
+
+function gpb {
+    b=`git symbolic-ref --short HEAD`
+    test $? == 0 || return;
+    echo git push origin $b
+}
 
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
