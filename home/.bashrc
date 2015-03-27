@@ -17,7 +17,8 @@ function gpb {
     `git push origin $b`
 }
 
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin
+export GOROOT=/usr/local/opt/go/libexec/
+export GOPATH=$HOME/h/go
+export PATH=$PATH:$GOPATH/bin
 
 # eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git.
