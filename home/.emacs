@@ -138,7 +138,10 @@
   (set-face-font 'default "Monospace-10"))
 
 (global-hl-line-mode)			; highlight current line
-(global-linum-mode 1)			; add line numbers on the left
+; (global-linum-mode 1)			; add line numbers on the left
+(color-theme-tango)
+(toggle-frame-maximized)
+(setq mouse-drag-copy-region t)
 
 ;; avoid compiz manager rendering bugs.  Whut?
 (add-to-list 'default-frame-alist '(alpha . 100))
