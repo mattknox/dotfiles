@@ -143,6 +143,9 @@
 (toggle-frame-maximized)
 (setq mouse-drag-copy-region t)
 
+;; delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; avoid compiz manager rendering bugs.  Whut?
 (add-to-list 'default-frame-alist '(alpha . 100))
 

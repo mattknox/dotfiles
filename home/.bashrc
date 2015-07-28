@@ -3,13 +3,17 @@ alias gphm='git push heroku master'
 alias gph="git push heroku master"
 alias gs='git status'
 alias gd='git diff'
+alias gdm="git diff master"
 alias gdom='git diff origin master'
 alias gdhm='git diff heroku master'
 alias gcm='git commit -am'
 alias gb="git branch"
+alias gmm="git merge master"
 alias ll="ls -l"
 alias co="git checkout"
 alias ms="git checkout master"
+alias be="bundle exec"
+alias brc="source ~/.bashrc"
 
 function gpb {
     b=`git symbolic-ref --short HEAD`
