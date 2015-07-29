@@ -1,4 +1,6 @@
 alias gpom="git pull origin master"
+
+export EDITOR="emacsclient -nw"
 alias gphm='git push heroku master'
 alias gph="git push heroku master"
 alias gs='git status'
@@ -14,6 +16,7 @@ alias co="git checkout"
 alias ms="git checkout master"
 alias be="bundle exec"
 alias brc="source ~/.bashrc"
+alias e=$EDITOR
 
 function gpb {
     b=`git symbolic-ref --short HEAD`

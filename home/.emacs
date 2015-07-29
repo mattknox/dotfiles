@@ -1,3 +1,4 @@
+
 ;; emacs kicker --- kick start emacs setup
 ;; Copyright (C) 2010 Dimitri Fontaine
 ;;
