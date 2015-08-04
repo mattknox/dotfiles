@@ -32,4 +32,4 @@ export GOPATH=$HOME/h/go
 export PATH=$PATH:$GOPATH/bin
 export HOMEBREW_GITHUB_API_TOKEN=f51c1cd369f4b4f5390a42b7c6465641122da4ec
 
-# eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git.
+eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git-just trying for now.
