@@ -15,6 +15,7 @@ alias co="git checkout"
 alias ms="git checkout master"
 alias be="bundle exec"
 alias brc="source ~/.bashrc"
+alias e="emacsclient -nw"
 
 function gpb {
     b=`git symbolic-ref --short HEAD`
