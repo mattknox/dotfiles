@@ -17,9 +17,13 @@ alias gmm="git merge master"
 alias ll="ls -l"
 alias co="git checkout"
 alias ms="git checkout master"
+
+alias clobber_branches="ms; gb | grep -v master | xargs git branch -d"
 alias be="bundle exec"
 alias brc="source ~/.bashrc"
+
 alias e=$EDITOR
+
 
 function gpb {
     b=`git symbolic-ref --short HEAD`

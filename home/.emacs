@@ -396,7 +396,7 @@
   (kill-this-buffer)
   (setq number-of-frames 0)
   (walk-windows (lambda (x) (setq number-of-frames (+ 1 number-of-frames))))
-  (if (< 2 number-of-frames)
+  (if (< 3 number-of-frames)
       (delete-window)))
 
 ;; this is from rails-lib.el in the emacs-rails package
