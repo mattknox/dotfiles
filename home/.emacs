@@ -458,6 +458,7 @@
                                (setq c-tab-always-indent nil)
                                (require 'inf-ruby)
                                (require 'ruby-compilation)
+                               (require 'ruby-electric-mode)
                                (define-key ruby-mode-map (kbd "M-r") 'run-rails-test-or-ruby-buffer))))
 (defun rhtml-mode-hook ()
   (autoload 'rhtml-mode "rhtml-mode" nil t)

@@ -14,13 +14,16 @@ alias gcom='git commit -m'
 alias gcm='git commit -am'
 alias gb="git branch"
 alias gmm="git merge master"
-alias ll="ls -l"
 alias co="git checkout"
 alias ms="git checkout master"
+alias gpr="gpb; git pull-request" # depends on hub.
 
-alias clobber_branches="ms; gb | grep -v master | xargs git branch -d"
+alias clobber_branches="ms; gpom; gb | grep -v master | xargs git branch -d"
+
 alias be="bundle exec"
 alias brc="source ~/.bashrc"
+alias ll="ls -l"
+
 
 alias e=$EDITOR
 
