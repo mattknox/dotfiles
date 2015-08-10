@@ -12,13 +12,15 @@ alias gdom='git diff origin master'
 alias gdhm='git diff heroku master'
 alias gcom='git commit -m'
 alias gcm='git commit -am'
-alias gb="git branch"
+alias gb="git branch -vv"
+alias gba="git branch -vv --all"
 alias gmm="git merge master"
 alias co="git checkout"
 alias ms="git checkout master"
 alias gpr="gpb; git pull-request" # depends on hub.
 
 alias clobber_branches="ms; gpom; gb | grep -v master | xargs git branch -d"
+alias linecredit="git ls-tree --name-only -z -r HEAD | xargs -0 -n1 git diff --no-index --numstat /dev/null 2>/dev/null | grep -v '^-' | cut -f 3- | cut -d ' ' -f 3- | xargs -n1 git blame --line-porcelain | grep '^author ' | cut -d ' ' -f 2- | sort | uniq -c | sort -nr;"
 
 alias be="bundle exec"
 alias brc="source ~/.bashrc"
