@@ -2,6 +2,7 @@ alias gpom="git pull origin master"
 
 export EDITOR="emacsclient -nw"
 
+alias g="git"
 alias gp='git pull'
 alias gphm='git push heroku master'
 alias gph="git push heroku master"
