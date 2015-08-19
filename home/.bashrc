@@ -19,13 +19,14 @@ alias ms="git checkout master"
 alias gpr="gpb; git pull-request" # depends on hub.
 alias gpom="git pull origin master"
 
-alias clobber_branches="git checkout master; git pull origin master; git branch | grep -v master | xargs git branch -d "
+
+alias clobber_branches="git checkout master; git pull origin master; git branch | grep -v master | xargs git branch -d; git remote prune origin"
 alias linecredit="git ls-tree --name-only -z -r HEAD | xargs -0 -n1 git diff --no-index --numstat /dev/null 2>/dev/null | grep -v '^-' | cut -f 3- | cut -d ' ' -f 3- | xargs -n1 git blame --line-porcelain | grep '^author ' | cut -d ' ' -f 2- | sort | uniq -c | sort -nr;"
 
 alias be="bundle exec"
 alias brc="source ~/.bashrc"
 alias ll="ls -l"
-
+alias hrc="heroku run rails c"
 
 alias e=$EDITOR
 
@@ -46,3 +47,9 @@ eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git-just try
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
+
+__git_complete co _git_checkout
+__git_complete g __git_main
+__git_complete gp __git_pull
+
+source ~/.work.sh
