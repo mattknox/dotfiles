@@ -444,6 +444,7 @@
 (global-set-key "\C-c\C-o" 'switch-to-minibuffer) ;; Bind to `C-c C-o'
 (setq js-indent-level 2)
 
+(setq ruby-insert-encoding-magic-comment nil)
 (defun ruby-mode-hook ()
   (autoload 'ruby-mode "ruby-mode" nil t)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
