@@ -492,6 +492,17 @@
         (pop-to-buffer (ruby-compilation-do filename command)))
     (ruby-compilation-this-buffer)))
 
+(defun wenshan-split-window-vertical (&optional wenshan-number)
+  "Split the current window into `wenshan-number' windows"
+  (interactive "P")
+  (setq wenshan-number (if wenshan-number
+                           (prefix-numeric-value wenshan-number)
+                         2))
+  (while (> wenshan-number 1)
+    (split-window-right)
+    (setq wenshan-number (- wenshan-number 1)))
+  (balance-windows))
+
 (defvar programming-modes
   '(emacs-lisp-mode
     scheme-mode
