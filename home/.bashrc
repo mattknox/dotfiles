@@ -7,6 +7,7 @@ alias gph="git push heroku master"
 alias gs='git status'
 alias gd='git diff'
 alias gdm="git diff master"
+alias gdmf="git diff master | egrep '^diff --git'"
 alias gdom='git diff origin master'
 alias gdhm='git diff heroku master'
 alias gcom='git commit -m'
