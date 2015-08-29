@@ -32,7 +32,6 @@ alias hrc="heroku run rails c"
 
 alias e=$EDITOR
 
-
 function gpb {
     b=`git symbolic-ref --short HEAD`
     test $? == 0 || return;
@@ -54,4 +53,6 @@ __git_complete co _git_checkout
 __git_complete g __git_main
 __git_complete gp __git_pull
 
-source ~/.work.sh
+if [ -f ~/.work.sh ]; then
+    source ~/.work.sh
+fi
