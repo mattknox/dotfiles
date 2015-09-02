@@ -531,6 +531,9 @@
 (unless (server-running-p)
   (server-start))
 
+(progn (split-window-right)
+       (split-window-right)
+       (balance-windows))
 ;; load time measurement.
 (defvar *emacs-load-time* (destructuring-bind (hi lo ms _) (current-time)
                             (- (+ hi lo) (+ (first *emacs-load-start*)
