@@ -12,6 +12,7 @@ alias gdom='git diff origin master'
 alias gdhm='git diff heroku master'
 alias gcom='git commit -m'
 alias gcm='git commit -am'
+alias gca='git commit --amend'
 alias gb="git branch -vv"
 alias gba="git branch -vv --all"
 alias gmm="git merge master"
