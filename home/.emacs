@@ -72,7 +72,7 @@
  '(;el-get				; el-get is self-hosting
    escreen            			; screen for emacs, C-\ C-h
    switch-window			; takes over C-x o
-   auto-complete			; complete as you type with overlays
+;   auto-complete			; complete as you type with overlays
    yasnippet 				; powerful snippet mode
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    color-theme		                ; nice looking emacs
