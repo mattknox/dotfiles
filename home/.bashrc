@@ -1,4 +1,3 @@
-
 export EDITOR="emacsclient -nw"
 
 alias g="git"
@@ -19,13 +18,13 @@ alias gba="git branch -vv --all"
 alias gmm="git merge master"
 alias co="git checkout"
 alias ms="git checkout master"
-alias gpr="gpb; git pull-request" # depends on hub.
+alias gpr="git fetch; git pull -r origin/master; gpb; git pull-request" # depends on hub.
 alias gpom="git pull origin master"
 
 alias lock="osascript -e 'do shell script \"open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app\"'"
 
 alias clobber_branches="git checkout master; git pull origin master; git branch | grep -v master | xargs git branch -d; git remote prune origin"
-alias linecredit="git ls-tree --name-only -z -r HEAD | xargs -0 -n1 git diff --no-index --numstat /dev/null 2>/dev/null | grep -v '^-' | cut -f 3- | cut -d ' ' -f 3- | xargs -n1 git blame --line-porcelain | grep '^author ' | cut -d ' ' -f 2- | sort | uniq -c | sort -nr;"
+alias linecredit="git ls-tree --name-only -z -r HEAD | xargs -0 -n1 git diff --no-index --numstat /dev/null 2>/dev/null | grep -v '^-' | cut -f 3- | cut -d ' ' -f 3- | xargs -n1 git blame --line-porcelain | grep '^author ' | cut -d ' ' -f 2- | sort | uniq -c | sort -nr"
 alias homesickup="homesick commit dotfiles; homesick push dotfiles"
 
 alias be="bundle exec"
