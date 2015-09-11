@@ -1,0 +1,1 @@
+ActiveRecord::Base.logger = Logger.new STDOUT  if Object.const_defined? "ActiveRecord::Base"
