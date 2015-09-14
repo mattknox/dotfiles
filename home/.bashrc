@@ -18,7 +18,7 @@ alias gba="git branch -vv --all"
 alias gmm="git merge master"
 alias co="git checkout"
 alias ms="git checkout master"
-alias gpr="git fetch; git pull -r origin/master; gpb; git pull-request" # depends on hub.
+alias gpr="git fetch; git pull -r origin master; gpb; git pull-request" # depends on hub.
 alias gpom="git pull origin master"
 
 alias lock="osascript -e 'do shell script \"open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app\"'"
