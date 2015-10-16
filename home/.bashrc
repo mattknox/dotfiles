@@ -27,10 +27,13 @@ alias clobber_branches="git checkout master; git pull origin master; git branch 
 alias linecredit="git ls-tree --name-only -z -r HEAD | xargs -0 -n1 git diff --no-index --numstat /dev/null 2>/dev/null | grep -v '^-' | cut -f 3- | cut -d ' ' -f 3- | xargs -n1 git blame --line-porcelain | grep '^author ' | cut -d ' ' -f 2- | sort | uniq -c | sort -nr"
 alias homesickup="homesick commit dotfiles; homesick push dotfiles"
 
+
 alias be="bundle exec"
 alias brc="source ~/.bashrc"
 alias ll="ls -l"
 alias hrc="heroku run rails c"
+
+alias fin="t dm @schweindiver"
 
 alias e=$EDITOR
 
@@ -42,7 +45,7 @@ function gpb {
 
 export GOROOT=/usr/local/opt/go/libexec/
 export GOPATH=$HOME/h/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=/usr/local/bin:$PATH:$GOPATH/bin:
 export HOMEBREW_GITHUB_API_TOKEN=f51c1cd369f4b4f5390a42b7c6465641122da4ec
 
 eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git-just trying for now.
