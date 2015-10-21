@@ -32,6 +32,7 @@ alias be="bundle exec"
 alias brc="source ~/.bashrc"
 alias ll="ls -l"
 alias hrc="heroku run rails c"
+alias rdbm="rake db:migrate; RAILS_ENV=test rake db:migrate"
 
 alias fin="t dm @schweindiver"
 
