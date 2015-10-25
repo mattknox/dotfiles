@@ -33,6 +33,7 @@ alias brc="source ~/.bashrc"
 alias ll="ls -l"
 alias hrc="heroku run rails c"
 alias rdbm="rake db:migrate; RAILS_ENV=test rake db:migrate"
+alias rdm="rake db:migrate; RAILS_ENV=test rake db:migrate"
 alias rc="rails c"
 alias r="rails"
 
