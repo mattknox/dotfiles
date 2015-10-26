@@ -37,6 +37,8 @@ alias rdm="rake db:migrate; RAILS_ENV=test rake db:migrate"
 alias rc="rails c"
 alias r="rails"
 
+alias msup="git pull origin master; bundle install; rake db:migrate"
+
 alias fin="t dm @schweindiver"
 
 alias e=$EDITOR
