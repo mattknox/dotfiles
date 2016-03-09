@@ -1,4 +1,6 @@
 export EDITOR="emacsclient -nw"
+export HISTSIZE=10000
+export HISTCONTROL=ignorespace
 
 alias g="git"
 alias gp='git pull'
@@ -20,6 +22,7 @@ alias co="git checkout"
 alias ms="git checkout master"
 alias gpr="gpb; git pull-request" # depends on hub.
 alias gpom="git pull origin master"
+alias gg="git rev-list --all | xargs git grep"
 
 alias lock="osascript -e 'do shell script \"open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app\"'"
 
@@ -32,8 +35,7 @@ alias be="bundle exec"
 alias brc="source ~/.bashrc"
 alias ll="ls -l"
 alias hrc="heroku run rails c"
-alias rdbm="rake db:migrate; RAILS_ENV=test rake db:migrate"
-alias rdm="rake db:migrate; RAILS_ENV=test rake db:migrate"
+alias rdm="rake db:migrate; RAILS_ENV=test rake db:migrate; rake parallel:migrate"
 alias rc="rails c"
 alias r="rails"
 
@@ -52,7 +54,6 @@ function gpb {
 export GOROOT=/usr/local/opt/go/libexec/
 export GOPATH=$HOME/h/go
 export PATH=/usr/local/bin:$PATH:$GOPATH/bin:
-export HOMEBREW_GITHUB_API_TOKEN=f51c1cd369f4b4f5390a42b7c6465641122da4ec
 
 eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git-just trying for now.
 
@@ -66,4 +67,8 @@ __git_complete gp __git_pull
 
 if [ -f ~/.work.sh ]; then
     source ~/.work.sh
+fi
+
+if [ -d ~/.rbenv ]; then
+    eval "$(rbenv init -)"
 fi

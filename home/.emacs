@@ -1,4 +1,3 @@
-
 ;; emacs kicker --- kick start emacs setup
 ;; Copyright (C) 2010 Dimitri Fontaine
 ;;
@@ -443,6 +442,16 @@
 (global-set-key "\C-co" 'switch-to-minibuffer) ;; Bind to `C-c o'
 (global-set-key "\C-c\C-o" 'switch-to-minibuffer) ;; Bind to `C-c C-o'
 (setq js-indent-level 2)
+
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+;; http://www.flycheck.org/manual/latest/index.html
+
+;; disable jshint since we prefer eslint checking
+(if (require 'flycheck nil t)
+    (setq-default flycheck-disabled-checkers
+                  (append flycheck-disabled-checkers
+                          '(javascript-jshint))))
 
 (setq ruby-insert-encoding-magic-comment nil)
 (defun ruby-mode-hook ()
