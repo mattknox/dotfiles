@@ -36,10 +36,12 @@ alias brc="source ~/.bashrc"
 alias ll="ls -l"
 alias hrc="heroku run rails c"
 alias rdm="rake db:migrate; RAILS_ENV=test rake db:migrate; rake parallel:migrate"
+alias rdr="rake db:rollback; RAILS_ENV=test rake db:rollback; rake parallel:drop parallel:create"
 alias rc="rails c"
 alias r="rails"
 
-alias msup="git pull origin master; bundle install; rake db:migrate"
+alias msup="git pull origin master; bundle install; rdm"
+alias rup="git pull origin master; bundle install; rdm"
 
 alias fin="t dm @schweindiver"
 
