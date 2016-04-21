@@ -1,6 +1,6 @@
 export EDITOR="emacsclient -nw"
 export HISTSIZE=10000
-export HISTCONTROL=ignorespace
+export HISTCONTROL=ignoreboth
 
 # makes multiple terminals append to, rather than overwrite, history from other terminals
 export PROMPT_COMMAND='history -a'
