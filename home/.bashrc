@@ -3,7 +3,7 @@ export HISTSIZE=10000
 export HISTCONTROL=ignoreboth
 
 # makes multiple terminals append to, rather than overwrite, history from other terminals
-export PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND="update_terminal_cwd; history -a"
 
 alias g="git"
 alias gp='git pull'
