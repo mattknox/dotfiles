@@ -77,3 +77,7 @@ fi
 if [ -d ~/.rbenv ]; then
     eval "$(rbenv init -)"
 fi
+
+if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
+  export PROMPT_COMMAND=$(echo $PROMPT_COMMAND | sed -e 's/update_terminal_cwd; //')
+fi
