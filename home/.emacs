@@ -100,6 +100,8 @@
    coffee-mode
    color-theme-tango))	                ; check out color-theme-solarized
 
+(add-hook 'clojure-mode-hook           #'enable-paredit-mode)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
 ;;
 ;; Some recipes require extra tools to be installed
 ;;
@@ -319,6 +321,7 @@
 
 (global-set-key (kbd "C-#") 'universal-argument)
 
+(setq mac-option-modifier 'meta) ; for compatibility between terminal and app emacs.
 ; (global-set-key (kbd "A-tab") 'slime-eval-print-last-expression)
 
 ;; mode-specific keybindings: maybe move these to their own file(s)?

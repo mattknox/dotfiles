@@ -50,6 +50,8 @@ alias fin="t dm @schweindiver"
 
 alias e=$EDITOR
 
+alias cljizzle="lein run 2>&1 | grep WARNING | grep -v already | cut -b 10-"
+
 function gpb {
     b=`git symbolic-ref --short HEAD`
     test $? == 0 || return;
@@ -80,4 +82,8 @@ fi
 
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
   export PROMPT_COMMAND=$(echo $PROMPT_COMMAND | sed -e 's/update_terminal_cwd; //')
+fi
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
 fi
