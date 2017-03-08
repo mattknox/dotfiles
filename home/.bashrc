@@ -1,9 +1,15 @@
 export EDITOR="emacsclient -nw"
 export HISTSIZE=10000
-export HISTCONTROL=ignoreboth
+#export HISTCONTROL=ignoreboth
+
+export HISTCONTROL=ignoreboth:erasedups
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
 
 # makes multiple terminals append to, rather than overwrite, history from other terminals
 export PROMPT_COMMAND="update_terminal_cwd; history -a"
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
 
 alias g="git"
 alias gp='git pull'
