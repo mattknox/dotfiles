@@ -99,9 +99,9 @@ if [ -f ~/code/arcanist/bin/arc ]; then
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/mattknox/Desktop/google-cloud-sdk/path.bash.inc'
+#source '/Users/mattknox/Desktop/google-cloud-sdk/path.bash.inc'
 
 # The next line enables shell command completion for gcloud.
-source '/Users/mattknox/Desktop/google-cloud-sdk/completion.bash.inc'
+#source '/Users/mattknox/Desktop/google-cloud-sdk/completion.bash.inc'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
