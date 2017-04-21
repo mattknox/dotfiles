@@ -42,7 +42,7 @@ alias homesickup="homesick commit dotfiles; homesick push dotfiles"
 
 alias be="bundle exec"
 alias brc="source ~/.bashrc"
-alias ll="ls -l"
+alias ll="ls -Glah"
 alias hrc="heroku run rails c"
 alias rdm="rake db:migrate; RAILS_ENV=test rake db:migrate; rake parallel:migrate"
 alias rdr="rake db:rollback; RAILS_ENV=test rake db:rollback; rake parallel:drop parallel:create"
@@ -103,3 +103,5 @@ source '/Users/mattknox/Desktop/google-cloud-sdk/path.bash.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/Users/mattknox/Desktop/google-cloud-sdk/completion.bash.inc'
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
