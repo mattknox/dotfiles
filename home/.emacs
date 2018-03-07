@@ -21,7 +21,7 @@
 (require 'cl)				; common lisp goodies, loop
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
+load-path
 ; TODO: make this require my forked version.
 (unless (require 'el-get nil t)
   (with-current-buffer
@@ -152,8 +152,18 @@
 (toggle-frame-maximized)
 (setq mouse-drag-copy-region t)
 
+
+; setup for orgflow:
+(setq org-mode-user-contrib-lisp-path "~/h/org-mode/contrib/lisp")
+(if (file-exists-p (expand-file-name "~/h/orgflow/orgflow.el" ))
+    (load (expand-file-name "~/h/orgflow/orgflow" )))
+
+
 ;; delete trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; had to disable this because it was causing problems with reddit
+;; code reviews, where sloppy trailing whitespace was pretty common.
+;(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 
 ;; avoid compiz manager rendering bugs.  Whut?
 (add-to-list 'default-frame-alist '(alpha . 100))
@@ -325,8 +335,40 @@
 (global-set-key (kbd "M-V") 'scroll-down)
 (global-set-key (kbd "M-X") 'kill-region)
 
-
 (global-set-key (kbd "C-#") 'universal-argument)
+
+;; org-mode config
+;(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+
+(setq org-log-done t)
+(setq org-agenda-files (list "~/org/"))
+(setq org-default-notes-file "~/org/refile.org")
+(setq org-journal-dir "~/org/journal")
+
+; grabbed this from https://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
+; the intent is to make emacs assume that I did not work when away from emacs.
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
+;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
+(setq org-capture-templates
+      (quote (("t" "todo" entry (file "~/org/refile.org")
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("r" "respond" entry (file "~/org/refile.org")
+               "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
+              ("n" "note" entry (file "~/org/refile.org")
+               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("j" "Journal" entry (file+datetree "~/org/diary.org")
+               "* %?\n%U\n" :clock-in t :clock-resume t)
+              ("w" "org-protocol" entry (file "~/org/refile.org")
+               "* TODO Review %c\n%U\n" :immediate-finish t)
+              ("m" "Meeting" entry (file "~/org/refile.org")
+               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
+              ("p" "Phone call" entry (file "~/org/refile.org")
+               "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
+              ("h" "Habit" entry (file "~/org/refile.org")
+               "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
 (setq mac-option-modifier 'meta) ; for compatibility between terminal and app emacs.
 ; (global-set-key (kbd "A-tab") 'slime-eval-print-last-expression)
@@ -567,3 +609,17 @@
 ;; (when window-system (set-exec-path-from-shell-PATH))
 (message "My .emacs loaded in %d s" *emacs-load-time*)
 (toggle-debug-on-error nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist cider clj-mode clj-refactor cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation queue))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
