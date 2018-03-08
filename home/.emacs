@@ -616,7 +616,8 @@ load-path
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist cider clj-mode clj-refactor cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation queue))))
+    (bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist cider clj-mode clj-refactor cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation prettier-js thrift roguel-ike projectile-rails rinari robe inf-clojure  ## elm-mode w3m ruby-compilation queue))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
