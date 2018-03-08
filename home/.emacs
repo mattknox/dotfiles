@@ -38,51 +38,53 @@
 ;; set local recipes
 (setq
  el-get-sources
- '((:name buffer-move			; have to add your own keys
-	  :after (progn
-		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
-		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
-		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
-		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
+ '(
+;;    (:name buffer-move			; have to add your own keys
+;; 	  :after (progn
+;; 		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
+;; 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
+;; 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
+;; 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
 
-   (:name smex				; a better (ido like) M-x
-	  :after (progn
-		   (setq smex-save-file "~/.emacs.d/.smex-items")
-		   (global-set-key (kbd "M-x") 'smex)
-		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+;;    (:name smex				; a better (ido like) M-x
+;; 	  :after (progn
+;; 		   (setq smex-save-file "~/.emacs.d/.smex-items")
+;; 		   (global-set-key (kbd "M-x") 'smex)
+;; 		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 
-   (:name magit				; git meet emacs, and a binding
-	  :after (progn
-		   (global-set-key (kbd "C-x C-z") 'magit-status)))
+;;    (:name magit				; git meet emacs, and a binding
+;; 	  :after (progn
+;; 		   (global-set-key (kbd "C-x C-z") 'magit-status)))
 
-   (:name ruby-mode
-	  :type elpa
-	  :load "ruby-mode.el")
-   (:name inf-ruby  :type elpa)
-   (:name ruby-compilation :type elpa)
-;   (:name css-mode :type elpa)
-   (:name textmate
-	  :type git
-	  :url "git://github.com/defunkt/textmate.el"
-	  :load "textmate.el")
-   (:name rhtml
-	  :type git
-	  :url "git://github.com/eschulte/rhtml"
-	  :features rhtml-mode)
-   (:name goto-last-change		; move pointer back to last change
-	  :after (progn
-		   ;; when using AZERTY keyboard, consider C-x C-_
-		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
+;;    (:name ruby-mode
+;; 	  :type elpa
+;; 	  :load "ruby-mode.el")
+;;    (:name inf-ruby  :type elpa)
+;;    (:name ruby-compilation :type elpa)
+;; ;   (:name css-mode :type elpa)
+;;    (:name textmate
+;; 	  :type git
+;; 	  :url "git://github.com/defunkt/textmate.el"
+;; 	  :load "textmate.el")
+;;    (:name rhtml
+;; 	  :type git
+;; 	  :url "git://github.com/eschulte/rhtml"
+;; 	  :features rhtml-mode)
+;;    (:name goto-last-change		; move pointer back to last change
+;; 	  :after (progn
+;; 		   ;; when using AZERTY keyboard, consider C-x C-_
+;;              (global-set-key (kbd "C-x C-/") 'goto-last-change))))
+ ))
 
 ;; ;; now set our own packages
 (setq
  my:el-get-packages
  '(;el-get				; el-get is self-hosting
-   escreen            			; screen for emacs, C-\ C-h
-   switch-window			; takes over C-x o
+   ;escreen            			; screen for emacs, C-\ C-h
+   ;switch-window			; takes over C-x o
 ;   auto-complete			; complete as you type with overlays
 ;   yasnippet 				; powerful snippet mode
-   zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
+   ;zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    color-theme		                ; nice looking emacs
 
    ;; makes handling lisp expressions much, much easier
@@ -104,9 +106,9 @@
    ;; customizations/navigation.el line 23 for a description
    ;; of ido
    ido-ubiquitous
-   js2-mode
-   js2-refactor
-   coffee-mode
+   ;js2-mode
+   ;js2-refactor
+   ;coffee-mode
    color-theme-tango))	                ; check out color-theme-solarized
 
 (add-hook 'clojure-mode-hook           #'enable-paredit-mode)
@@ -618,7 +620,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation thrift rinari robe ## queue))))
+    (buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation thrift rinari robe ## queue))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
