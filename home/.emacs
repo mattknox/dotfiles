@@ -472,10 +472,8 @@
 (progn (split-window-right)
        (split-window-right)
        (balance-windows))
-;; load time measurement.
-(defvar *emacs-load-time* (destructuring-bind (hi lo ms _) (current-time)
-                            (- (+ hi lo) (+ (first *emacs-load-start*)
-                                            (second *emacs-load-start*)))))
+
+(setq magit-repository-directories `(("~/.homesick/repos/dotfiles" . 0) ("~/h/reddit" . 1)))
 
 ;; fix the PATH variable
 ;; (defun set-exec-path-from-shell-PATH ()
@@ -500,4 +498,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
+
+;; load time measurement.
+(defvar *emacs-load-time* (destructuring-bind (hi lo ms _) (current-time)
+                            (- (+ hi lo) (+ (first *emacs-load-start*)
+                                            (second *emacs-load-start*)))))
