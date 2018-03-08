@@ -9,7 +9,6 @@
 ;;
 ;; This file is NOT part of GNU Emacs.
 
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -18,121 +17,36 @@
 
 (toggle-debug-on-error t)
 (defvar *emacs-load-start* (current-time))
-(require 'cl)				; common lisp goodies, loop
 
 (require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
+
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-; TODO: make this require my forked version.
-(unless (require 'el-get nil t)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://github.com/dimitri/el-get/raw/master/el-get-install.el")
-    (end-of-buffer)
-    (eval-print-last-sexp)))
-
-;; now either el-get is `require'd already, or have been `load'ed by the
-;; el-get installer.
-
-;; set local recipes
-(setq
- el-get-sources
- '(
-;;    (:name buffer-move			; have to add your own keys
-;; 	  :after (progn
-;; 		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
-;; 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
-;; 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
-;; 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
-
-;;    (:name smex				; a better (ido like) M-x
-;; 	  :after (progn
-;; 		   (setq smex-save-file "~/.emacs.d/.smex-items")
-;; 		   (global-set-key (kbd "M-x") 'smex)
-;; 		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
-
-;;    (:name magit				; git meet emacs, and a binding
-;; 	  :after (progn
-;; 		   (global-set-key (kbd "C-x C-z") 'magit-status)))
-
-;;    (:name ruby-mode
-;; 	  :type elpa
-;; 	  :load "ruby-mode.el")
-;;    (:name inf-ruby  :type elpa)
-;;    (:name ruby-compilation :type elpa)
-;; ;   (:name css-mode :type elpa)
-;;    (:name textmate
-;; 	  :type git
-;; 	  :url "git://github.com/defunkt/textmate.el"
-;; 	  :load "textmate.el")
-;;    (:name rhtml
-;; 	  :type git
-;; 	  :url "git://github.com/eschulte/rhtml"
-;; 	  :features rhtml-mode)
-;;    (:name goto-last-change		; move pointer back to last change
-;; 	  :after (progn
-;; 		   ;; when using AZERTY keyboard, consider C-x C-_
-;;              (global-set-key (kbd "C-x C-/") 'goto-last-change))))
- ))
-
-;; ;; now set our own packages
-(setq
- my:el-get-packages
- '(;el-get				; el-get is self-hosting
-   ;escreen            			; screen for emacs, C-\ C-h
-   ;switch-window			; takes over C-x o
-;   auto-complete			; complete as you type with overlays
-;   yasnippet 				; powerful snippet mode
-   ;zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
-   color-theme		                ; nice looking emacs
-
-   ;; makes handling lisp expressions much, much easier
-   ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
-;   paredit
-
-   ;; key bindings and code colorization for Clojure
-   ;; https://github.com/clojure-emacs/clojure-mode
-;   clojure-mode
-
-   ;; extra syntax highlighting for clojure
-;   clojure-mode-extra-font-locking
-
-   ;; integration with a Clojure REPL
-   ;; https://github.com/clojure-emacs/cider
-;   cider
-
-   ;; allow ido usage in as many contexts as possible. see
-   ;; customizations/navigation.el line 23 for a description
-   ;; of ido
-   ido-ubiquitous
-   ;js2-mode
-   ;js2-refactor
-   ;coffee-mode
-   color-theme-tango))	                ; check out color-theme-solarized
+(require 'cl)				; common lisp goodies, loop
 
 (add-hook 'clojure-mode-hook           #'enable-paredit-mode)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-;;
-;; Some recipes require extra tools to be installed
-;;
-;; Note: el-get-install requires git, so we know we have at least that.
-;;
-;; (when (ignore-errors (el-get-executable-find "cvs"))
-;;   (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
-;; (when (ignore-errors (el-get-executable-find "svn"))
-;;   (loop for p in '(psvn    		; M-x svn-status
-;; 		   )
-;; 	do (add-to-list 'my:el-get-packages p)))
+;; (setq my:el-get-packages
+;;       (append
+;;        my:el-get-packages
+;;        (loop for src in el-get-sources collect (el-get-source-name src))))
 
-(setq my:el-get-packages
-      (append
-       my:el-get-packages
-       (loop for src in el-get-sources collect (el-get-source-name src))))
-
-;; install new packages and init already installed packages
-(el-get 'sync my:el-get-packages)
+;;                (global-set-key (kbd "<C-S-up>")     'buf-move-up)
+;;                (global-set-key (kbd "<C-S-down>")   'buf-move-down)
+;;                (global-set-key (kbd "<C-S-left>")   'buf-move-left)
+;;                (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
@@ -273,7 +187,7 @@
 ;; have vertical ido completion lists
 (setq ido-decorations
       '("\n-> " "" "\n   " "\n   ..." "[" "]"
-	" [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]"))
+  " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]"))
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
@@ -282,7 +196,7 @@
 (defun fullscreen ()
   (interactive)
   (set-frame-parameter nil 'fullscreen
-		       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
+           (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'fullscreen)
 
 ; like universal argument, don't use it much, need C-u
@@ -316,9 +230,9 @@
 (global-set-key "\M-#" 'comment-dwim) ; TODO: should this be paredit-comment-dwim?
 (global-set-key (kbd "M-DEL") 'backward-kill-sexp)
 (global-set-key "\C-xh" (lambda (url) (interactive "MUrl: ")
-			  (switch-to-buffer (url-retrieve-synchronously url))
-			  (rename-buffer url t)
-			  (html-mode)))
+        (switch-to-buffer (url-retrieve-synchronously url))
+        (rename-buffer url t)
+        (html-mode)))
 
 (global-set-key [C-tab] 'other-window)
 (global-set-key (kbd "<C-left>")  'windmove-left)
@@ -620,7 +534,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation thrift rinari robe ## queue))))
+    (color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation thrift rinari robe ## queue))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
