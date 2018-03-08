@@ -20,8 +20,10 @@
 (defvar *emacs-load-start* (current-time))
 (require 'cl)				; common lisp goodies, loop
 
+(require 'package)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-load-path
+
 ; TODO: make this require my forked version.
 (unless (require 'el-get nil t)
   (with-current-buffer
@@ -72,31 +74,31 @@ load-path
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
 
-;; now set our own packages
+;; ;; now set our own packages
 (setq
  my:el-get-packages
  '(;el-get				; el-get is self-hosting
    escreen            			; screen for emacs, C-\ C-h
    switch-window			; takes over C-x o
 ;   auto-complete			; complete as you type with overlays
-   yasnippet 				; powerful snippet mode
+;   yasnippet 				; powerful snippet mode
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    color-theme		                ; nice looking emacs
 
    ;; makes handling lisp expressions much, much easier
    ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
-   paredit
+;   paredit
 
    ;; key bindings and code colorization for Clojure
    ;; https://github.com/clojure-emacs/clojure-mode
-   clojure-mode
+;   clojure-mode
 
    ;; extra syntax highlighting for clojure
 ;   clojure-mode-extra-font-locking
 
    ;; integration with a Clojure REPL
    ;; https://github.com/clojure-emacs/cider
-   cider
+;   cider
 
    ;; allow ido usage in as many contexts as possible. see
    ;; customizations/navigation.el line 23 for a description
@@ -114,13 +116,13 @@ load-path
 ;;
 ;; Note: el-get-install requires git, so we know we have at least that.
 ;;
-(when (ignore-errors (el-get-executable-find "cvs"))
-  (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
+;; (when (ignore-errors (el-get-executable-find "cvs"))
+;;   (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
-(when (ignore-errors (el-get-executable-find "svn"))
-  (loop for p in '(psvn    		; M-x svn-status
-		   )
-	do (add-to-list 'my:el-get-packages p)))
+;; (when (ignore-errors (el-get-executable-find "svn"))
+;;   (loop for p in '(psvn    		; M-x svn-status
+;; 		   )
+;; 	do (add-to-list 'my:el-get-packages p)))
 
 (setq my:el-get-packages
       (append
@@ -148,13 +150,13 @@ load-path
 
 (global-hl-line-mode)			; highlight current line
 ; (global-linum-mode 1)			; add line numbers on the left
-(color-theme-tango)
+;(color-theme-tango)
 (toggle-frame-maximized)
 (setq mouse-drag-copy-region t)
 
+(require 'org)
 
 ; setup for orgflow:
-(setq org-mode-user-contrib-lisp-path "~/h/org-mode/contrib/lisp")
 (if (file-exists-p (expand-file-name "~/h/orgflow/orgflow.el" ))
     (load (expand-file-name "~/h/orgflow/orgflow" )))
 
@@ -616,11 +618,11 @@ load-path
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist cider clj-mode clj-refactor cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation prettier-js thrift roguel-ike projectile-rails rinari robe inf-clojure  ## elm-mode w3m ruby-compilation queue))))
+    (magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation thrift rinari robe ## queue))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
