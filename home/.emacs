@@ -21,6 +21,17 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
+;; these are the packages I've installed explicitly. 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
+(package-install-selected-packages)
+
 (require 'cl)				; common lisp goodies, loop
 
 (add-hook 'clojure-mode-hook           #'enable-paredit-mode)
@@ -44,7 +55,7 @@
 
 (global-hl-line-mode)			; highlight current line
 ; (global-linum-mode 1)			; add line numbers on the left
-;(color-theme-tango)
+(color-theme-solarized)
 (toggle-frame-maximized)
 (setq mouse-drag-copy-region t)
 
@@ -482,16 +493,6 @@
 ;;     (setq exec-path (split-string path-from-shell path-separator))))
 
 ;; (when window-system (set-exec-path-from-shell-PATH))
-(message "My .emacs loaded in %d s" *emacs-load-time*)
-(toggle-debug-on-error nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation thrift rinari robe ## queue))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -504,3 +505,5 @@
 (defvar *emacs-load-time* (destructuring-bind (hi lo ms _) (current-time)
                             (- (+ hi lo) (+ (first *emacs-load-start*)
                                             (second *emacs-load-start*)))))
+(message "My .emacs loaded in %d s" *emacs-load-time*)
+(toggle-debug-on-error nil)
