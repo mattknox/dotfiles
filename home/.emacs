@@ -481,7 +481,6 @@
   (server-start))
 
 (progn (split-window-right)
-       (split-window-right)
        (balance-windows))
 
 (setq magit-repository-directories `(("~/.homesick/repos/dotfiles" . 0) ("~/h/reddit" . 1)))
