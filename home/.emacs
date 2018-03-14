@@ -249,7 +249,7 @@
 (global-set-key "\C-ca" 'org-agenda)
 
 (setq org-log-done t)
-(setq org-agenda-files (list "~/org/"))
+(setq org-agenda-files (quote ("~/org/")))
 (setq org-default-notes-file "~/org/refile.org")
 (setq org-journal-dir "~/org/journal")
 
