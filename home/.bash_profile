@@ -13,3 +13,6 @@ source $HOME/.bashrc
 . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
