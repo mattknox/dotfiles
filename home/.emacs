@@ -483,7 +483,12 @@
 (progn (split-window-right)
        (balance-windows))
 
+(require 'ruby-mode)
+;; TODO: fix this shit.  It bananas.
+(setq require-final-newlines nil)
 (setq require-final-newline nil)
+(setq mode-require-final-newline nil)
+(setq mode-require-final-newlines nil)
 (require 'ethan-wspace)
 (global-ethan-wspace-mode 1)
 (setq magit-repository-directories `(("~/.homesick/repos/dotfiles" . 0) ("~/h/reddit" . 1)))
