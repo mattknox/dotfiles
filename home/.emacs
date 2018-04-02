@@ -483,6 +483,9 @@
 (progn (split-window-right)
        (balance-windows))
 
+(setq require-final-newline nil)
+(require 'ethan-wspace)
+(global-ethan-wspace-mode 1)
 (setq magit-repository-directories `(("~/.homesick/repos/dotfiles" . 0) ("~/h/reddit" . 1)))
 
 ;; fix the PATH variable
