@@ -34,7 +34,7 @@
  '(package-selected-packages
    (quote
     (xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
-(package-install-selected-packages)
+(ignore-errors (package-install-selected-packages))
 
 (require 'cl)				; common lisp goodies, loop
 
@@ -59,10 +59,10 @@
 
 (global-hl-line-mode)			; highlight current line
 ; (global-linum-mode 1)			; add line numbers on the left
-(if (fboundp 'color-theme-solarized)
-    (color-theme-solarized)
-  (if (load-theme 'leuven t)
-      (load-theme 'leuven-dark t)))
+(ignore-errors  (if (fboundp 'color-theme-solarized)
+                    (color-theme-solarized)
+                  (if (load-theme 'leuven t)
+                      (load-theme 'leuven-dark t))))
 (toggle-frame-maximized)
 (setq mouse-drag-copy-region t)
 
