@@ -27,27 +27,32 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
+ '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("43c1a8090ed19ab3c0b1490ce412f78f157d69a29828aa977dae941b994b4147" default)))
+    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "43c1a8090ed19ab3c0b1490ce412f78f157d69a29828aa977dae941b994b4147" default)))
  '(debug-on-error t)
  '(package-selected-packages
    (quote
-    (xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
+    (use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
 (ignore-errors (package-install-selected-packages))
 
-(require 'cl)				; common lisp goodies, loop
+(require 'cl) ; common lisp goodies, loop
 
 (add-hook 'clojure-mode-hook           #'enable-paredit-mode)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
 
 ;; on to the visual settings
-(setq inhibit-splash-screen t)		; no splash screen, thanks
-(line-number-mode 1)			; have line numbers and
-(column-number-mode 1)			; column numbers in the mode line
+(setq inhibit-splash-screen t) ; no splash screen, thanks
+(line-number-mode 1) ; have line numbers and
+(column-number-mode 1) ; column numbers in the mode line
 
-(tool-bar-mode -1)			; no tool bar with icons
-(scroll-bar-mode -1)			; no scroll bars
+(tool-bar-mode -1)         ; no tool bar with icons
+(scroll-bar-mode -1) ; no scroll bars
 (unless (string-match "apple-darwin" system-configuration)
   ;; on mac, there's always a menu bar drown, don't have it empty
   (menu-bar-mode -1))
@@ -57,8 +62,8 @@
     (set-face-font 'default "Monaco-10")
   (set-face-font 'default "Monospace-10"))
 
-(global-hl-line-mode)			; highlight current line
-; (global-linum-mode 1)			; add line numbers on the left
+(global-hl-line-mode)  ; highlight current line
+; (global-linum-mode 1) ; add line numbers on the left
 (ignore-errors  (if (fboundp 'color-theme-solarized)
                     (color-theme-solarized)
                   (if (load-theme 'leuven t)
@@ -507,6 +512,19 @@
 ;;     (setq exec-path (split-string path-from-shell path-separator))))
 
 ;; (when window-system (set-exec-path-from-shell-PATH))
+
+;; org-roam config
+(require 'org-roam)
+(define-key org-roam-mode-map (kbd "C-c n l") #'org-roam)
+(define-key org-roam-mode-map (kbd "C-c n f") #'org-roam-find-file)
+(define-key org-roam-mode-map (kbd "C-c n j") #'org-roam-jump-to-index)
+(define-key org-roam-mode-map (kbd "C-c n b") #'org-roam-switch-to-buffer)
+(define-key org-roam-mode-map (kbd "C-c n g") #'org-roam-graph)
+(define-key org-mode-map (kbd "C-c n i") #'org-roam-insert)
+(org-roam-mode +1)
+(setq org-roam-directory "~/org/")
+(setq org-roam-buffer "*roamn-mattknox*")
+(setq org-roam-completion-system 'ivy)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
