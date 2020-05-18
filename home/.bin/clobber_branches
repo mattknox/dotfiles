@@ -1,0 +1,20 @@
+#! /usr/bin/env ruby
+
+`git stash`
+`git fetch`
+`git checkout master`
+`git pull`
+branches = `git branch`.split("\n") - ["* master"]
+
+branches.each do |b|
+  `git checkout #{b}`
+  merge_output = `git merge master`
+  if merge_output.match(/^CONFLICT/)
+    `git reset --hard`
+  end
+  diff_output = `git diff master`
+  `git checkout master`
+  if diff_output.empty?
+    `git branch -D #{b}`
+  end
+end
