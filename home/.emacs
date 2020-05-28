@@ -38,7 +38,7 @@
  '(debug-on-error t)
  '(package-selected-packages
    (quote
-    (paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
+    (paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
 (ignore-errors (package-install-selected-packages))
 
 (require 'cl) ; common lisp goodies, loop
@@ -215,7 +215,10 @@
 (global-set-key (kbd "C-M-n") 'forward-char)
 (global-set-key (kbd "C-TAB")  'lisp-indent-line)
 (global-set-key (kbd "C-w") 'backward-kill-word)
-(global-set-key "\C-x\C-m" 'smex)
+(if (featurep 'smex)
+    (global-set-key "\C-x\C-m" 'smex)
+  (global-set-key "\C-x\C-m" 'execute-extended-command))
+  
 
 (global-set-key "\C-x\C-g" 'magit-status)
 (global-set-key "\C-x\g" 'magit-status)
@@ -269,8 +272,8 @@
 
 ; grabbed this from https://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
 ; the intent is to make emacs assume that I did not work when away from emacs.
-(setq org-clock-persist 'history)
-(org-clock-persistence-insinuate)
+;(setq org-clock-persist 'history)
+;(org-clock-persistence-insinuate)
 
 (setq mac-option-modifier 'meta) ; for compatibility between terminal and app emacs.
 ; (global-set-key (kbd "A-tab") 'slime-eval-print-last-expression)
