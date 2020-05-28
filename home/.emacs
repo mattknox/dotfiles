@@ -38,13 +38,15 @@
  '(debug-on-error t)
  '(package-selected-packages
    (quote
-    (use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
+    (paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org-plus-contrib org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
 (ignore-errors (package-install-selected-packages))
 
 (require 'cl) ; common lisp goodies, loop
 
-(add-hook 'clojure-mode-hook           #'enable-paredit-mode)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(if (featurep 'paredit)
+    (progn
+      (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+      (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)))
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t) ; no splash screen, thanks
@@ -514,17 +516,24 @@
 ;; (when window-system (set-exec-path-from-shell-PATH))
 
 ;; org-roam config
-(require 'org-roam)
-(define-key org-roam-mode-map (kbd "C-c n l") #'org-roam)
-(define-key org-roam-mode-map (kbd "C-c n f") #'org-roam-find-file)
-(define-key org-roam-mode-map (kbd "C-c n j") #'org-roam-jump-to-index)
-(define-key org-roam-mode-map (kbd "C-c n b") #'org-roam-switch-to-buffer)
-(define-key org-roam-mode-map (kbd "C-c n g") #'org-roam-graph)
-(define-key org-mode-map (kbd "C-c n i") #'org-roam-insert)
-(org-roam-mode +1)
-(setq org-roam-directory "~/org/")
-(setq org-roam-buffer "*roamn-mattknox*")
-(setq org-roam-completion-system 'ivy)
+(if (featurep 'org-roam)
+    (use-package org-roam
+      :hook
+      (after-init . org-roam-mode)
+      :custom
+      (org-roam-directory "/path/to/org-files/")
+      :bind (:map org-roam-mode-map
+                  (("C-c n l" . org-roam)
+                   ("C-c n f" . org-roam-find-file)
+                   ("C-c n j" . org-roam-jump-to-index)
+                   ("C-c n b" . org-roam-switch-to-buffer)
+                   ("C-c n g" . org-roam-graph))
+                  :map org-mode-map
+                  (("C-c n i" . org-roam-insert))))
+                                        ;(org-roam-mode +1)
+  (setq org-roam-directory "~/org/")
+  (setq org-roam-buffer "*roamn-mattknox*")
+  (setq org-roam-completion-system 'ivy))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
