@@ -71,11 +71,11 @@
 (toggle-frame-maximized)
 (setq mouse-drag-copy-region t)
 
-(require 'org)
+;(require 'org)
 
 ; setup for orgflow:
-(if (file-exists-p (expand-file-name "~/h/orgflow/orgflow.el" ))
-    (load (expand-file-name "~/h/orgflow/orgflow" )))
+;; (if (file-exists-p (expand-file-name "~/h/orgflow/orgflow.el" ))
+;;     (load (expand-file-name "~/h/orgflow/orgflow" )))
 
 
 ;; delete trailing whitespace
@@ -501,8 +501,8 @@
 (setq require-final-newline nil)
 (setq mode-require-final-newline nil)
 (setq mode-require-final-newlines nil)
-(require 'ethan-wspace)
-(global-ethan-wspace-mode 1)
+;(require 'ethan-wspace)
+;(global-ethan-wspace-mode 1)
 (setq magit-repository-directories `(("~/.homesick/repos/dotfiles" . 0) ("~/h/reddit" . 1)))
 
 ;; fix the PATH variable
