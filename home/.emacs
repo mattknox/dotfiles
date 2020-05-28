@@ -43,7 +43,7 @@
 
 (require 'cl) ; common lisp goodies, loop
 
-(if (featurep 'paredit)
+(if (fboundp 'paredit-mode)
     (progn
       (add-hook 'clojure-mode-hook #'enable-paredit-mode)
       (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)))
@@ -522,6 +522,8 @@
 (if (featurep 'org-roam)
     (progn
       (setq org-roam-directory "~/org/")
+      (setq org-roam-buffer "*roamn-mattknox*")
+      (setq org-roam-completion-system 'ivy)
       (use-package org-roam
         :hook
         (after-init . org-roam-mode)
@@ -536,10 +538,7 @@
                     :map org-mode-map
                     (("C-c n i" . org-roam-insert))))
       (setq org-roam-directory "~/org/")
-      (org-roam-mode +1)
-      (setq org-roam-buffer "*roamn-mattknox*")
-      (setq org-roam-completion-system 'ivy)))
-  
+      (org-roam-mode +1)))  
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
