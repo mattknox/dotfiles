@@ -519,26 +519,24 @@
 ;; (when window-system (set-exec-path-from-shell-PATH))
 
 ;; org-roam config
-(if (featurep 'org-roam)
-    (progn
-      (setq org-roam-directory "~/org/")
-      (setq org-roam-buffer "*roamn-mattknox*")
-      (setq org-roam-completion-system 'ivy)
-      (use-package org-roam
-        :hook
-        (after-init . org-roam-mode)
-        :custom
-        (org-roam-directory "/path/to/org-files/")
-        :bind (:map org-roam-mode-map
-                    (("C-c n l" . org-roam)
-                     ("C-c n f" . org-roam-find-file)
-                     ("C-c n j" . org-roam-jump-to-index)
-                     ("C-c n b" . org-roam-switch-to-buffer)
-                     ("C-c n g" . org-roam-graph))
-                    :map org-mode-map
-                    (("C-c n i" . org-roam-insert))))
-      (setq org-roam-directory "~/org/")
-      (org-roam-mode +1)))  
+(when (fboundp 'org-roam)
+  (use-package org-roam
+    :hook
+    (after-init . org-roam-mode)
+    :custom
+    (org-roam-directory "~/org")
+    :bind (:map org-roam-mode-map
+                (("C-c n l" . org-roam)
+                 ("C-c n f" . org-roam-find-file)
+                 ("C-c n j" . org-roam-jump-to-index)
+                 ("C-c n b" . org-roam-switch-to-buffer)
+                 ("C-c n g" . org-roam-graph))
+                :map org-mode-map
+                (("C-c n i" . org-roam-insert))))
+  (setq org-roam-directory "~/org")
+  (setq org-roam-buffer "*roamn-mattknox*")
+  (setq org-roam-completion-system 'ivy)
+  (org-roam-mode +1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
