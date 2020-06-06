@@ -219,7 +219,7 @@
 (global-set-key (kbd "C-M-n") 'forward-char)
 (global-set-key (kbd "C-TAB")  'lisp-indent-line)
 (global-set-key (kbd "C-w") 'backward-kill-word)
-(if (featurep 'smex)
+(if (fboundp 'smex)
     (global-set-key "\C-x\C-m" 'smex)
   (global-set-key "\C-x\C-m" 'execute-extended-command))
   
