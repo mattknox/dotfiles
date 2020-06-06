@@ -540,7 +540,9 @@
   (setq org-roam-directory "~/org")
   (setq org-roam-buffer "*roamn-mattknox*")
   (setq org-roam-completion-system 'ivy)
-  (org-roam-mode +1))
+  (org-roam-mode +1)
+  (require 'ol))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
