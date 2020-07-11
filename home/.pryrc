@@ -2,6 +2,6 @@ ActiveRecord::Base.logger = Logger.new STDOUT  if Object.const_defined? "ActiveR
 
 class Object
   def own_methods
-    (self.methods.sort - Object.instance_methods).inspect
+    (self.methods.sort - Object.instance_methods)
   end
 end

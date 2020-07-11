@@ -21,7 +21,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
-;; these are the packages I've installed explicitly. 
+;; these are the packages I've installed explicitly.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -222,7 +222,7 @@
 (if (fboundp 'smex)
     (global-set-key "\C-x\C-m" 'smex)
   (global-set-key "\C-x\C-m" 'execute-extended-command))
-  
+
 
 (global-set-key "\C-x\C-g" 'magit-status)
 (global-set-key "\C-x\g" 'magit-status)
@@ -510,6 +510,13 @@
 (setq require-final-newline nil)
 (setq mode-require-final-newline nil)
 (setq mode-require-final-newlines nil)
+(setq-default show-trailing-whitespace t)
+(add-hook 'ruby-mode-hook
+          (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+(add-hook 'lisp-mode-hook
+          (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+(add-hook 'org-mode-hook
+          (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 ;(require 'ethan-wspace)
 ;(global-ethan-wspace-mode 1)
 (setq magit-repository-directories `(("~/.homesick/repos/dotfiles" . 0) ("~/h/reddit" . 1)))
@@ -520,8 +527,11 @@
 ;;     (setenv "PATH" path-from-shell)
 ;;     (setq exec-path (split-string path-from-shell path-separator))))
 
-;; (when window-system (set-exec-path-from-shell-PATH))
+;; (when window-system (set-exec-path-frobm-shell-PATH))
 
+
+(require 're-builder)
+(setq reb-re-syntax 'string)
 ;; org-roam config
 (when (fboundp 'org-roam)
   (use-package org-roam
