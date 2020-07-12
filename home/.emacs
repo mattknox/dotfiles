@@ -61,7 +61,7 @@
 
 ;; choose your own fonts, in a system dependant way
 (if (string-match "apple-darwin" system-configuration)
-    (set-face-font 'default "Monaco-10")
+    (set-face-font 'default "Monaco-9")
   (set-face-font 'default "Monospace-10"))
 
 (global-hl-line-mode)  ; highlight current line
