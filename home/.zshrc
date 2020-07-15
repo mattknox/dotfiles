@@ -5,7 +5,7 @@ setopt HIST_IGNORE_DUPS
 
 #export HISTCONTROL=ignoreboth:erasedups
 # When the shell exits, append to the history file instead of overwriting it
-shopt -s histappend
+# shopt -s histappend
 
 # makes multiple terminals append to, rather than overwrite, history from other terminals
 #export PROMPT_COMMAND="update_terminal_cwd; history -a"
@@ -43,7 +43,6 @@ alias homesickup="homesick commit dotfiles; homesick push dotfiles"
 
 
 alias be="bundle exec"
-alias brc="source ~/.bashrc"
 alias ll="ls -Glah"
 alias hrc="heroku run rails c"
 alias rdm="rake db:migrate; RAILS_ENV=test rake db:migrate; rake parallel:migrate"
@@ -72,14 +71,6 @@ export PATH=/usr/local/bin:$PATH:$GOPATH/bin:
 
 eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git-just trying for now.
 
-if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
-fi
-
-__git_complete co _git_checkout
-__git_complete g __git_main
-__git_complete gp __git_pull
-
 if [ -f ~/.work.sh ]; then
     source ~/.work.sh
 fi
@@ -95,19 +86,5 @@ fi
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
   export PROMPT_COMMAND=$(echo $PROMPT_COMMAND | sed -e 's/update_terminal_cwd; //')
 fi
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
-
-if [ -f ~/code/arcanist/bin/arc ]; then
-    export PATH="$PATH:$HOME/code/arcanist/bin"
-fi
-
-# The next line updates PATH for the Google Cloud SDK.
-#source '/Users/mattknox/Desktop/google-cloud-sdk/path.bash.inc'
-
-# The next line enables shell command completion for gcloud.
-#source '/Users/mattknox/Desktop/google-cloud-sdk/completion.bash.inc'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

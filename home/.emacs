@@ -31,14 +31,38 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
+ '(custom-enabled-themes (quote (sanityinc-solarized-light)))
  '(custom-safe-themes
    (quote
-    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "43c1a8090ed19ab3c0b1490ce412f78f157d69a29828aa977dae941b994b4147" default)))
+    ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "43c1a8090ed19ab3c0b1490ce412f78f157d69a29828aa977dae941b994b4147" default)))
  '(debug-on-error t)
+ '(fci-rule-color "#0a2832")
+ '(org-roam-directory "~/org")
  '(package-selected-packages
    (quote
-    (paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))))
+    (paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue)))
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#c60007")
+     (40 . "#bd3612")
+     (60 . "#a57705")
+     (80 . "#728a05")
+     (100 . "#259185")
+     (120 . "#2075c7")
+     (140 . "#c61b6e")
+     (160 . "#5859b7")
+     (180 . "#c60007")
+     (200 . "#bd3612")
+     (220 . "#a57705")
+     (240 . "#728a05")
+     (260 . "#259185")
+     (280 . "#2075c7")
+     (300 . "#c61b6e")
+     (320 . "#5859b7")
+     (340 . "#c60007")
+     (360 . "#bd3612"))))
+ '(vc-annotate-very-old-color nil))
 (ignore-errors (package-install-selected-packages))
 
 (require 'cl) ; common lisp goodies, loop
@@ -206,16 +230,12 @@
            (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'fullscreen)
 
-; like universal argument, don't use it much, need C-u
-(global-set-key (kbd "C-S-u") 'universal-argument)
-(global-set-key (kbd "C-u") 'forward-sexp)
+(global-set-key (kbd "C-S-u") 'revert-buffer)
 (global-set-key (kbd "C-t") 'transpose-sexps)
 (global-set-key (kbd "C-M-t") 'transpose-chars)
-(global-set-key (kbd "C-o") 'backward-sexp)
+(global-set-key (kbd "S-left") 'backward-sexp)
+(global-set-key (kbd "S-right") 'forward-sexp)
 (global-set-key (kbd "C-M-u") 'backward-char)
-(global-set-key (kbd "C-n") 'next-line)
-(global-set-key (kbd "C-a") 'beginning-of-line)
-(global-set-key (kbd "C-p") 'previous-line)
 (global-set-key (kbd "C-M-n") 'forward-char)
 (global-set-key (kbd "C-TAB")  'lisp-indent-line)
 (global-set-key (kbd "C-w") 'backward-kill-word)
