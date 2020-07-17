@@ -1,4 +1,6 @@
 export EDITOR="emacsclient -nw"
+alias e="emacsclient -nw"
+
 export HISTSIZE=10000
 setopt HIST_IGNORE_DUPS
 #export HISTCONTROL=ignoreboth
@@ -54,25 +56,18 @@ alias msup="git pull origin master; bundle install; rdm"
 alias rup="git pull origin master; bundle install; rdm"
 
 alias fin="t dm @schweindiver"
-
-alias e=$EDITOR
-
 alias cljizzle="lein run 2>&1 | grep WARNING | grep -v already | cut -b 10-"
 
-alias gpb="git push origin $(git symbolic-ref --short HEAD)"
+alias gpb="git push origin \$(git symbolic-ref --short HEAD)"
 
 export GOROOT=/usr/local/opt/go/libexec/
 export GOPATH=$HOME/h/go
 export PATH=/usr/local/bin:$PATH:$GOPATH/bin:
 
-eval "$(hub alias -s)" # uncomment when I decide I want hub to wrap git-just trying for now.
+eval "$(hub alias -s)"
 
 if [ -f ~/.work.sh ]; then
     source ~/.work.sh
-fi
-
-if [ -f ~/work.sh ]; then
-    source ~/work.sh
 fi
 
 if [ -d ~/.rbenv ]; then
