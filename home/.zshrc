@@ -59,11 +59,7 @@ alias e=$EDITOR
 
 alias cljizzle="lein run 2>&1 | grep WARNING | grep -v already | cut -b 10-"
 
-function gpb {
-    b=`git symbolic-ref --short HEAD`
-    test $? == 0 || return;
-    `git push origin $b`
-}
+alias gpb="git push origin $(git symbolic-ref --short HEAD)"
 
 export GOROOT=/usr/local/opt/go/libexec/
 export GOPATH=$HOME/h/go
