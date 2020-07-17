@@ -37,8 +37,6 @@ alias gpr="gpb; git pull-request" # depends on hub.
 alias gpom="git pull origin master"
 alias gg="git rev-list --all | xargs git grep"
 
-alias lock="osascript -e 'do shell script \"open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app\"'"
-
 #alias clobber_branches="git checkout master; git pull origin master; git branch | grep -v master | xargs git branch -d; git remote prune origin"
 alias linecredit="git ls-tree --name-only -z -r HEAD | xargs -0 -n1 git diff --no-index --numstat /dev/null 2>/dev/null | grep -v '^-' | cut -f 3- | cut -d ' ' -f 3- | xargs -n1 git blame --line-porcelain | grep '^author ' | cut -d ' ' -f 2- | sort | uniq -c | sort -nr"
 alias homesickup="homesick commit dotfiles; homesick push dotfiles"
