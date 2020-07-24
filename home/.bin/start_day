@@ -1,0 +1,2 @@
+#! /usr/bin/env ruby
+`homesick pull; homesick link; cd ~/org; ./sync_org.rb`
