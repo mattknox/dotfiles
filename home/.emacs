@@ -198,9 +198,9 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 
-(defun run-servers ()
-  (edit-server-start)
-  (server-start))
+;; (defun run-servers ()
+;;   (edit-server-start)
+;;   (server-start))
 
 ; use default Mac browser
 ;(setq browse-url-browser-function 'browse-url-default-macosx-browser)
@@ -571,6 +571,7 @@
   (setq org-roam-buffer "*roamn-mattknox*")
   (setq org-roam-completion-system 'ivy)
   (org-roam-mode +1)
+  (require 'org-protocol)
   (require 'org-roam-protocol)
   (require 'ol))
 
