@@ -564,7 +564,8 @@
                  ("C-c n f" . org-roam-find-file)
                  ("C-c n j" . org-roam-jump-to-index)
                  ("C-c n b" . org-roam-switch-to-buffer)
-                 ("C-c n g" . org-roam-graph))
+                 ("C-c n g" . org-roam-graph)
+                 ("M-[" . org-roam-insert-immediate))
                 :map org-mode-map
                 (("C-c n i" . org-roam-insert-immediate))))
   (setq org-roam-directory "~/org")
