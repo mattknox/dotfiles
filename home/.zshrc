@@ -15,26 +15,28 @@ setopt HIST_IGNORE_DUPS
 
 export AUTOCOMMIT_PATHS="~/org"
 
+# TODO: should I make this look at init.defaultBranch?
+alias git_default_branch="git rev-parse --abbrev-ref origin/HEAD | sed 's/.*\///'"
 alias g="git"
 alias gp='git pull'
-alias gphm='git push heroku \$(git symbolic-ref --short HEAD)'
-alias gph="git push heroku \$(git symbolic-ref --short HEAD)"
+alias gphm='git push heroku master'
+alias gph="git push heroku master"
 alias gs='git status'
 alias gd='git diff'
-alias gdm="git diff \$(git symbolic-ref --short HEAD)"
-alias gdmf="git diff \$(git symbolic-ref --short HEAD) | egrep '^diff --git'"
-alias gdom='git diff origin \$(git symbolic-ref --short HEAD)'
-alias gdhm='git diff heroku \$(git symbolic-ref --short HEAD)'
+alias gdm="git diff \$(git_default_branch)"
+alias gdmf="git diff \$(git_default_branch) | egrep '^diff --git'"
+alias gdom='git diff origin \$(git_default_branch)'
+alias gdhm='git diff heroku \$(git_default_branch)'
 alias gcom='git commit -m'
 alias gcm='git commit -am'
 alias gca='git commit --amend'
 alias gb="git branch -vv"
 alias gba="git branch -vv --all"
-alias gmm="git merge \$(git symbolic-ref --short HEAD)"
+alias gmm="git merge \$(git_default_branch)"
 alias co="git checkout"
-alias ms="git checkout \$(git symbolic-ref --short HEAD)"
+alias ms="git checkout \$(git_default_branch)"
 alias gpr="gpb; git pull-request" # depends on hub.
-alias gpom="git pull origin \$(git symbolic-ref --short HEAD)"
+alias gpom="git pull origin \$(git_default_branch)"
 alias gg="git rev-list --all | xargs git grep"
 
 #alias clobber_branches="git checkout master; git pull origin master; git branch | grep -v master | xargs git branch -d; git remote prune origin"
@@ -50,8 +52,8 @@ alias rdr="rake db:rollback; RAILS_ENV=test rake db:rollback; rake parallel:drop
 alias rc="rails c"
 alias r="rails"
 
-alias msup="git pull origin \$(git symbolic-ref --short HEAD); bundle install; rdm"
-alias rup="git pull origin \$(git symbolic-ref --short HEAD); bundle install; rdm"
+alias msup="git pull origin \$(git_default_branch); bundle install; rdm"
+alias rup="git pull origin \$(git_default_branch); bundle install; rdm"
 
 alias fin="t dm @schweindiver"
 alias cljizzle="lein run 2>&1 | grep WARNING | grep -v already | cut -b 10-"
