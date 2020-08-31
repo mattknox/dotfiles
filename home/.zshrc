@@ -78,4 +78,5 @@ if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
   export PROMPT_COMMAND=$(echo $PROMPT_COMMAND | sed -e 's/update_terminal_cwd; //')
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.bin:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export MFA_DEVICE='arn:aws:iam::210246326331:mfa/matt.knox'
