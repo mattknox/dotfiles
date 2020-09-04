@@ -4,6 +4,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; TODO: do a pass through this and refactor.
 (toggle-debug-on-error t)
 (defvar *emacs-load-start* (current-time))
 
@@ -31,20 +32,17 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(custom-enabled-themes (quote (sanityinc-solarized-light)))
+ '(custom-enabled-themes '(sanityinc-solarized-light))
  '(custom-safe-themes
-   (quote
-    ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "43c1a8090ed19ab3c0b1490ce412f78f157d69a29828aa977dae941b994b4147" default)))
+   '("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "43c1a8090ed19ab3c0b1490ce412f78f157d69a29828aa977dae941b994b4147" default))
  '(debug-on-error t)
  '(fci-rule-color "#0a2832")
  '(org-roam-directory "~/org")
  '(package-selected-packages
-   (quote
-    (keycast kakoune hyperbole rust-mode rust-playground rustic ruby-electric paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue)))
+   '(emmet-mode zencoding-mode go-mode keycast kakoune hyperbole rust-mode rust-playground rustic ruby-electric paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#c60007")
+   '((20 . "#c60007")
      (40 . "#bd3612")
      (60 . "#a57705")
      (80 . "#728a05")
@@ -61,7 +59,7 @@
      (300 . "#c61b6e")
      (320 . "#5859b7")
      (340 . "#c60007")
-     (360 . "#bd3612"))))
+     (360 . "#bd3612")))
  '(vc-annotate-very-old-color nil))
 (ignore-errors (package-install-selected-packages))
 
@@ -136,7 +134,8 @@
 
 
 ;; Turn on auto-fill for text buffers
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
+; (add-hook 'text-mode-hook 'turn-on-auto-fill) ; turns out I don't like this behavior.
+(add-hook 'text-mode-hook 'visual-line-mode)
 
 ;; M-x shell is a nice shell interface to use, let's make it colorful.  If
 ;; you need a terminal emulator rather than just a shell, consider M-x term
