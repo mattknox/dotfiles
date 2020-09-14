@@ -292,7 +292,8 @@
 (setq org-agenda-files (quote ("~/org/")))
 (setq org-default-notes-file "~/org/refile.org")
 (setq org-journal-dir "~/org/journal")
-
+(setq org-todo-keywords
+      '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "|" "DONE(d!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)")))
 ; grabbed this from https://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
 ; the intent is to make emacs assume that I did not work when away from emacs.
 ;(setq org-clock-persist 'history)
