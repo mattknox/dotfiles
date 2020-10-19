@@ -14,6 +14,7 @@ setopt HIST_IGNORE_DUPS
 #export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 export AUTOCOMMIT_PATHS="~/org"
+export REDDIT_SOURCE_DIR="~/h/reddit"
 
 # TODO: should I make this look at init.defaultBranch?
 alias git_default_branch="git rev-parse --abbrev-ref origin/HEAD | sed 's/.*\///'"
@@ -38,6 +39,7 @@ alias ms="git checkout \$(git_default_branch)"
 alias gpr="gpb; git pull-request" # depends on hub.
 alias gpom="git pull origin \$(git_default_branch)"
 alias gg="git rev-list --all | xargs git grep"
+export KNOXTESTZ="this variable set in .zshrc"
 
 #alias clobber_branches="git checkout master; git pull origin master; git branch | grep -v master | xargs git branch -d; git remote prune origin"
 alias linecredit="git ls-tree --name-only -z -r HEAD | xargs -0 -n1 git diff --no-index --numstat /dev/null 2>/dev/null | grep -v '^-' | cut -f 3- | cut -d ' ' -f 3- | xargs -n1 git blame --line-porcelain | grep '^author ' | cut -d ' ' -f 2- | sort | uniq -c | sort -nr"
@@ -68,7 +70,11 @@ eval "$(hub alias -s)"
 
 if [ -f ~/.work.sh ]; then
     source ~/.work.sh
+    print "200: ~/.work.sh found."
+else
+    print "404: ~/.work.sh not found."
 fi
+
 
 if [ -d ~/.rbenv ]; then
     eval "$(rbenv init -)"

@@ -39,7 +39,7 @@
  '(fci-rule-color "#0a2832")
  '(org-roam-directory "~/org")
  '(package-selected-packages
-   '(emmet-mode zencoding-mode go-mode keycast kakoune hyperbole rust-mode rust-playground rustic ruby-electric paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))
+   '(org-roam-server emmet-mode zencoding-mode go-mode keycast kakoune hyperbole rust-mode rust-playground rustic ruby-electric paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#c60007")
@@ -293,7 +293,7 @@
 (setq org-default-notes-file "~/org/refile.org")
 (setq org-journal-dir "~/org/journal")
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "|" "DONE(d!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)")))
+      '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "FUTURE(f@/!)"  "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)")))
 ; grabbed this from https://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
 ; the intent is to make emacs assume that I did not work when away from emacs.
 ;(setq org-clock-persist 'history)
