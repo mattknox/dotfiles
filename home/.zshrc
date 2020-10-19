@@ -18,7 +18,6 @@ export REDDIT_SOURCE_DIR="~/h/reddit"
 
 # TODO: should I make this look at init.defaultBranch?
 alias git_default_branch="git rev-parse --abbrev-ref origin/HEAD | sed 's/.*\///'"
-alias g="git"
 alias gp='git pull'
 alias gphm='git push heroku master'
 alias gph="git push heroku master"
@@ -83,6 +82,9 @@ fi
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
   export PROMPT_COMMAND=$(echo $PROMPT_COMMAND | sed -e 's/update_terminal_cwd; //')
 fi
+
+# git clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh-nvm
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 export PATH="$PATH:$HOME/.bin:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export MFA_DEVICE='arn:aws:iam::210246326331:mfa/matt.knox'
