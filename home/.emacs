@@ -20,7 +20,6 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-;;(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
 ;; these are the packages I've installed explicitly.
 (custom-set-variables
@@ -63,8 +62,6 @@
  '(vc-annotate-very-old-color nil))
 (ignore-errors (package-install-selected-packages))
 
-; (require 'cl) ; common lisp goodies, loop
-
 (if (fboundp 'paredit-mode)
     (progn
       (add-hook 'clojure-mode-hook #'enable-paredit-mode)
@@ -94,13 +91,6 @@
                       (load-theme 'leuven-dark t))))
 (toggle-frame-maximized)
 (setq mouse-drag-copy-region t)
-
-;(require 'org)
-
-; setup for orgflow:
-;; (if (file-exists-p (expand-file-name "~/h/orgflow/orgflow.el" ))
-;;     (load (expand-file-name "~/h/orgflow/orgflow" )))
-
 
 ;; delete trailing whitespace
 ;; had to disable this because it was causing problems with reddit
@@ -553,6 +543,12 @@
 (require 're-builder)
 (setq reb-re-syntax 'string)
 ;; org-roam config
+
+(when (fboundp 'use-package)
+  (use-package ruby-mode
+    :mode "\\.rb\\'"
+    :interpreter "ruby"))
+
 (when (fboundp 'org-roam)
   (use-package org-roam
     :hook
