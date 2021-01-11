@@ -14,13 +14,13 @@
        (proto (if no-ssl "http" "https")))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+;;(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
 ;; these are the packages I've installed explicitly.
 (custom-set-variables
@@ -39,7 +39,7 @@
  '(fci-rule-color "#0a2832")
  '(org-roam-directory "~/org")
  '(package-selected-packages
-   '(org-roam-server emmet-mode zencoding-mode go-mode keycast kakoune hyperbole rust-mode rust-playground rustic ruby-electric paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))
+   '(go-errcheck go-playground org-roam-server emmet-mode zencoding-mode go-mode keycast kakoune hyperbole rust-mode rust-playground rustic ruby-electric paredit use-package ivy helm org-roam deft xml-rpc jira ox-jira zenburn-theme spacegray-theme gruvbox-theme molokai-theme color-theme-sanityinc-solarized 4clojure cider-decompile cider-eval-sexp-fu cider-spy circe clojure-mode clojurescript-mode ox-gfm htmlize color-theme-tango tangotango-theme naquadah-theme color-theme buffer-move magit smex org prettier-js thrift roguel-ike projectile-rails clj-refactor inf-clojure cider elm-mode w3m bbdb anki-editor code-library org-mime ethan-wspace org-blog org-jira org-journal gist clj-mode cljsbuild-mode clojure-cheatsheet geiser gh ghc tumble twittering-mode typed-clojure-mode typescript-mode ruby-mode ruby-compilation rinari robe ## queue))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#c60007")
@@ -63,7 +63,7 @@
  '(vc-annotate-very-old-color nil))
 (ignore-errors (package-install-selected-packages))
 
-(require 'cl) ; common lisp goodies, loop
+; (require 'cl) ; common lisp goodies, loop
 
 (if (fboundp 'paredit-mode)
     (progn
@@ -293,7 +293,7 @@
 (setq org-default-notes-file "~/org/refile.org")
 (setq org-journal-dir "~/org/journal")
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "FUTURE(f@/!)"  "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)")))
+      '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "FUTURE(f@/!)" "INBOX(i!)" "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)" "JUNKDRAWER(j@/!)")))
 ; grabbed this from https://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
 ; the intent is to make emacs assume that I did not work when away from emacs.
 ;(setq org-clock-persist 'history)
@@ -565,9 +565,11 @@
                  ("C-c n j" . org-roam-jump-to-index)
                  ("C-c n b" . org-roam-switch-to-buffer)
                  ("C-c n g" . org-roam-graph)
-                 ("M-[" . org-roam-insert-immediate))
+                 ("M-[" . org-roam-insert-immediate)
+                 )
                 :map org-mode-map
-                (("C-c n i" . org-roam-insert-immediate))))
+                (("C-c n i" . org-roam-insert-immediate))
+                ))
   (setq org-roam-directory "~/org")
   (setq org-roam-buffer "*roamn-mattknox*")
   (setq org-roam-completion-system 'ivy)

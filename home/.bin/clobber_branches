@@ -1,6 +1,6 @@
 #! /usr/bin/env ruby
 
-main_branch = `$(git symbolic-ref --short HEAD)`
+main_branch = `git symbolic-ref --short HEAD`.strip
 `git stash`
 `git fetch`
 `git checkout #{main_branch}`
