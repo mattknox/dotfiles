@@ -88,3 +88,4 @@ source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 export PATH="$PATH:$HOME/.bin:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export MFA_DEVICE='arn:aws:iam::210246326331:mfa/matt.knox'
+export AWS_SDK_LOAD_CONFIG=true
