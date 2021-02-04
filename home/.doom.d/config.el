@@ -53,3 +53,35 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(global-set-key (kbd "C-t") 'transpose-sexps)
+(global-set-key (kbd "C-M-t") 'transpose-chars)
+(global-set-key (kbd "C-f") 'forward-sexp)
+(global-set-key (kbd "C-b") 'backward-sexp)
+(global-set-key (kbd "C-M-u") 'backward-char)
+(global-set-key (kbd "C-M-n") 'forward-char)
+(global-set-key (kbd "C-TAB")  'lisp-indent-line)
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(if (fboundp 'smex)
+    (global-set-key "\C-x\C-m" 'smex)
+  (global-set-key "\C-x\C-m" 'execute-extended-command))
+
+(global-set-key "\C-x\C-g" 'magit-status)
+(global-set-key "\C-x\g" 'magit-status)
+(global-set-key [(control x) (control b)] 'electric-buffer-list)
+(global-set-key "\M-g" 'goto-line)
+(global-set-key "\M-w" 'kill-buffer-and-maybe-close-frame)
+(global-set-key (kbd "M-s") 'save-some-buffers)
+
+(global-set-key (kbd "M-c") 'copy-region-as-kill)
+(global-set-key (kbd "M-C") 'capitalize-word)
+(global-set-key (kbd "M-v") 'yank)
+(global-set-key (kbd "M-V") 'scroll-down)
+(global-set-key (kbd "M-X") 'kill-region)
+(global-set-key (kbd "C-#") 'universal-argument)
+
+(global-set-key (kbd "C-#") 'universal-argument)
+; (setq org-default-notes-file "~/org/refile.org")
+; (setq org-journal-dir "~/org/journal")
+;; (setq org-todo-keywords
+;;       '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "FUTURE(f@/!)" "INBOX(i!)" "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)" "JUNKDRAWER(j@/!)")))
