@@ -547,7 +547,18 @@
 (when (fboundp 'use-package)
   (use-package ruby-mode
     :mode "\\.rb\\'"
-    :interpreter "ruby"))
+    :interpreter "ruby"
+    :config
+    ; this unbelievably gross hack deals with rinari's need of this const, defined in ruby-mode but somehow not loaded.
+    (defconst ruby-keyword-end-re
+      (if (string-match "\\_>" "ruby")
+          "\\_>"
+        "\\>"))
+    )
+  (use-package rinari
+    :ensure t
+    :after (ruby-mode))
+  )
 
 (when (fboundp 'org-roam)
   (use-package org-roam
