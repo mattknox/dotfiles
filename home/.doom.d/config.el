@@ -83,5 +83,10 @@
 (global-set-key (kbd "C-#") 'universal-argument)
 ; (setq org-default-notes-file "~/org/refile.org")
 ; (setq org-journal-dir "~/org/journal")
+(setq org-todo-keywords
+      '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "FUTURE(f@/!)" "INBOX(i!)" "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)" "JUNKDRAWER(j@/!)")))
 ;; (setq org-todo-keywords
-;;       '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "FUTURE(f@/!)" "INBOX(i!)" "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)" "JUNKDRAWER(j@/!)")))
+;; ((sequence "TODO(t)" "PROJ(p)" "STRT(s)" "WAIT(w)" "HOLD(h)"
+;;            "|" "DONE(d)" "KILL(k)")
+;;  (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)"))
+;;  )
