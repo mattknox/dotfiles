@@ -90,3 +90,4 @@
 ;;            "|" "DONE(d)" "KILL(k)")
 ;;  (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)"))
 ;;  )
+(global-set-key (kbd "s-[") 'org-roam-insert-immediate)
