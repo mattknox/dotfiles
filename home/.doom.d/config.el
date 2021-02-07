@@ -81,13 +81,46 @@
 (global-set-key (kbd "C-#") 'universal-argument)
 
 (global-set-key (kbd "C-#") 'universal-argument)
+;(global-set-key (kbd "s-[") 'org-roam-insert-immediate)
 ; (setq org-default-notes-file "~/org/refile.org")
 ; (setq org-journal-dir "~/org/journal")
+(eval-after-load 'org-roam
+                    '(define-key org-roam-mode-map (kbd "M-[") 'org-roam-insert-immediate))
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "STARTED(s!)" "BLOCKED(b@/!)" "FUTURE(f@/!)" "INBOX(i!)" "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)" "JUNKDRAWER(j@/!)")))
+      '((sequence "TODO(t!)" "STARTED(s@/!)" "BLOCKED(b@/!)" "FUTURE(f@/!)" "INBOX(i!)" "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)" "JUNKDRAWER(j@/!)")))
 ;; (setq org-todo-keywords
 ;; ((sequence "TODO(t)" "PROJ(p)" "STRT(s)" "WAIT(w)" "HOLD(h)"
 ;;            "|" "DONE(d)" "KILL(k)")
 ;;  (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)"))
 ;;  )
 (global-set-key (kbd "s-[") 'org-roam-insert-immediate)
+
+(after! org
+  (setq org-todo-keywords
+        '((sequence
+           "TODO(t!)"  ; A task that needs doing & is ready to do
+           "PROJ(p)"   ; A project, which usually contains other tasks
+           "STARTED(s@/!)"  ; A task that is in progress
+           "WAIT(w@/!)"  ; Something external is holding up this task
+           "HOLD(h)"  ; This task is paused/on hold because of me
+           "FUTURE(f@/!)"   ; in da futcha
+           "INBOX(i!)"   ; to be processed in GTD flows (maybe redundant?)
+           "|"
+           "DONE(d)"  ; Task successfully completed
+           "HANDOFF(h@/!)"
+           "ABANDONED(a@/!)"
+           "JUNKDRAWER(j@/!)"
+           "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
+          (sequence
+           "[ ](T)"   ; A task that needs doing
+           "[-](S)"   ; Task is in progress
+           "[?](W)"   ; Task is being held up or paused
+           "|"
+           "[X](D)")) ; Task was completed
+        org-todo-keyword-faces
+        '(("[-]"  . +org-todo-active)
+          ("STARTED" . +org-todo-active)
+          ("[?]"  . +org-todo-onhold)
+          ("WAIT" . +org-todo-onhold)
+          ("HOLD" . +org-todo-onhold)
+          ("PROJ" . +org-todo-project))))
