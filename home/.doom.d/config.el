@@ -106,11 +106,11 @@
            "FUTURE(f@/!)"   ; in da futcha
            "INBOX(i!)"   ; to be processed in GTD flows (maybe redundant?)
            "|"
-           "DONE(d)"  ; Task successfully completed
+           "DONE(d@/!)"  ; Task successfully completed
            "HANDOFF(h@/!)"
            "ABANDONED(a@/!)"
            "JUNKDRAWER(j@/!)"
-           "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
+           "KILL(k@/!)") ; Task was cancelled, aborted or is no longer applicable
           (sequence
            "[ ](T)"   ; A task that needs doing
            "[-](S)"   ; Task is in progress
