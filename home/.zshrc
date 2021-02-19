@@ -61,7 +61,16 @@ alias cljizzle="lein run 2>&1 | grep WARNING | grep -v already | cut -b 10-"
 
 alias gpb="git push origin \$(git symbolic-ref --short HEAD)"
 
-export GOROOT=/usr/local/opt/go/libexec/
+
+# Apple Silicon macs have homebrew root in /opt/homebrew
+if [ "arm" = `uname -p` ]
+then
+    export GOROOT='/opt/homebrew/opt/go/libexec'
+else
+    export GOROOT=/usr/local/opt/go/libexec/
+fi
+
+
 export GOPATH=$HOME/h/go
 export PATH=/usr/local/bin:$PATH:$GOPATH/bin:
 
