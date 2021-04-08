@@ -65,7 +65,14 @@ function gpb {
     `git push origin $b`
 }
 
-export GOROOT=/usr/local/opt/go/libexec/
+# Apple Silicon macs have homebrew root in /opt/homebrew
+if [ "arm" = `uname -p` ]
+then
+    export GOROOT='/opt/homebrew/opt/go/libexec'
+else
+    export GOROOT=/usr/local/opt/go/libexec/
+fi
+
 export GOPATH=$HOME/h/go
 export PATH=/usr/local/bin:$PATH:$GOPATH/bin:
 
