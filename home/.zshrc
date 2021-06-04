@@ -67,7 +67,7 @@ if [ "arm" = `uname -p` ]
 then
     export GOROOT='/opt/homebrew/opt/go/libexec'
 else
-    export GOROOT=/usr/local/opt/go/libexec/
+    export GOROOT='/opt/homebrew/opt/go/libexec' #/usr/local/opt/go/libexec/
 fi
 
 
