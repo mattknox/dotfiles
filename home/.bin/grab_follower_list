@@ -1,0 +1,13 @@
+#! /usr/bin/env ruby
+require "json"
+outfile = ARGV[0] || "/Users/mattknox/org/follower_ids"
+h = {"next_cursor" => -1}
+result = {"ids" => []}
+
+until h["next_cursor"].zero?
+  s = `twurl "/1.1/followers/ids.json?cursor=#{h['next_cursor']}&screen_name=mattknox&count=5000"`
+  h = JSON.parse s
+  result["ids"] += h["ids"]
+end
+
+File.open(outfile, "w") { |f| f.puts result["ids"] }
