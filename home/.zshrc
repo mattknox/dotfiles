@@ -17,7 +17,8 @@ export AUTOCOMMIT_PATHS="~/org"
 export REDDIT_SOURCE_DIR="~/h/reddit"
 
 # TODO: should I make this look at init.defaultBranch?
-alias git_default_branch="git rev-parse --abbrev-ref origin/HEAD | sed 's/.*\///'"
+#alias git_default_branch="git rev-parse --abbrev-ref origin/HEAD | sed 's/.*\///'"
+alias git_default_branch="git remote show origin | grep HEAD | cut -d':' -f2"
 alias gp='git pull'
 alias gphm='git push heroku master'
 alias gph="git push heroku master"
@@ -72,7 +73,7 @@ fi
 
 
 export GOPATH=$HOME/h/go
-export PATH=/usr/local/bin:$PATH:$GOPATH/bin:
+export PATH=/usr/local/bin:/opt/homebrew/sbin:$PATH:$GOPATH/bin:
 
 eval "$(hub alias -s)"
 

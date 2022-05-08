@@ -124,3 +124,6 @@
           ("WAIT" . +org-todo-onhold)
           ("HOLD" . +org-todo-onhold)
           ("PROJ" . +org-todo-project))))
+
+(after! lsp-rust
+  (setq lsp-rust-server 'rust-analyzer))
