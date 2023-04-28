@@ -13,6 +13,19 @@ setopt HIST_IGNORE_DUPS
 #export PROMPT_COMMAND="update_terminal_cwd; history -a"
 #export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
+
+# Function to source a shell script if it exists
+source_if_exists() {
+  local script_path="$1"
+
+  if [ -f "$script_path" ]; then
+    echo "Sourcing $script_path..."
+    source "$script_path"
+  else
+    echo "File $script_path does not exist. Skipping."
+  fi
+}
+
 export AUTOCOMMIT_PATHS="~/org"
 export REDDIT_SOURCE_DIR="~/h/reddit"
 
@@ -94,8 +107,7 @@ if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
 fi
 
 # git clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh-nvm
-source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+source_if_exists ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
-export PATH="$PATH:$HOME/.bin:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export MFA_DEVICE='arn:aws:iam::210246326331:mfa/matt.knox'
 export AWS_SDK_LOAD_CONFIG=true

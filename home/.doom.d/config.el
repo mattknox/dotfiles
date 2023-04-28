@@ -85,7 +85,7 @@
 ; (setq org-default-notes-file "~/org/refile.org")
 ; (setq org-journal-dir "~/org/journal")
 (eval-after-load 'org-roam
-                    '(define-key org-roam-mode-map (kbd "M-[") 'org-roam-insert-immediate))
+                    '(define-key org-roam-mode-map (kbd "M-[") 'org-roam-node-insert))
 (setq org-todo-keywords
       '((sequence "TODO(t!)" "STARTED(s@/!)" "BLOCKED(b@/!)" "FUTURE(f@/!)" "INBOX(i!)" "|" "DONE(d@/!)" "HANDOFF(h@/!)" "ABANDONED(a@/!)" "JUNKDRAWER(j@/!)")))
 ;; (setq org-todo-keywords
@@ -93,7 +93,7 @@
 ;;            "|" "DONE(d)" "KILL(k)")
 ;;  (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)"))
 ;;  )
-(global-set-key (kbd "s-[") 'org-roam-insert-immediate)
+(global-set-key (kbd "s-[") 'org-roam-node-insert)
 
 (after! org
   (setq org-todo-keywords
